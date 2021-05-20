@@ -1,0 +1,29 @@
+{
+  "name": "high-load-nodejs-server",
+  "version": "1.0.0",
+  "description": "High load Node.js server using cluster",
+  "author": "arcbjorn",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "build": "tsc",
+    "build:clean": "tsc --clean",
+    "watch:ts": "tsc --watch",
+    "watch:node": "nodemon dist/index.js",
+    "serve": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,green.bold\" \"yarn watch:ts\" \"yarn watch:node\"",
+    "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet",
+    "clean": "git clean -dfqX -- ./node_modules ./dist"
+  },
+  "dependencies": {
+    "concurrently": "^6.1.0",
+    "nodemon": "^2.0.7"
+  },
+  "devDependencies": {
+    "@types/node": "^15.3.1",
+    "@typescript-eslint/eslint-plugin": "^4.24.0",
+    "@typescript-eslint/parser": "^4.24.0",
+    "eslint": "^7.26.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.23.2"
+  }
+}
