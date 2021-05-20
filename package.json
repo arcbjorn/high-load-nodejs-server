@@ -12,7 +12,8 @@
     "watch:node": "nodemon dist/index.js",
     "serve": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"yellow.bold,green.bold\" \"yarn watch:ts\" \"yarn watch:node\"",
     "lint": "tsc --noEmit && eslint \"**/*.{js,ts}\" --quiet",
-    "clean": "git clean -dfqX -- ./node_modules ./dist"
+    "clean": "git clean -dfqX -- ./node_modules ./dist",
+    "load-test": "yarn autocannon -c 200 -d 10 http://localhost:8080"
   },
   "dependencies": {
     "concurrently": "^6.1.0",
@@ -22,6 +23,7 @@
     "@types/node": "^15.3.1",
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
+    "autocannon": "^7.3.0",
     "eslint": "^7.26.0",
     "eslint-config-airbnb-base": "^14.2.1",
     "eslint-plugin-import": "^2.23.2"
